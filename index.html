@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Kapnos Cafe | كابنوس</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="logo-wrapper">
+        <img src="5990236113736833788.webp" alt="Kapnos Logo" class="main-logo-img">
+    </div>
+   <header class="top-bar">
+    <div class="main-header-content">
+        <h1 class="brand-name">KAPNOS</h1>
+        
+        <div class="contact-icons-row">
+            <a href="https://www.facebook.com/share/18aYHZXZC6/" target="_blank" class="social-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+            </a>
+            
+            <a href="https://wa.me/201105484940" class="whatsapp-simple">
+                <span>01105484940</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+            </a>
+
+            <a href="https://wa.me/201105484941" class="whatsapp-simple">
+                <span>01105484941</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WA">
+            </a>
+        </div>
+
+        <div class="location-bar-v2">
+            <img src="https://cdn-icons-png.flaticon.com/512/2838/2838912.png" alt="Map">
+            <span>حدائق اكتوبر-مول يوتوبيا-بجوار ميدان بداية-محل رقم 8</span>
+        </div>
+    </div>
+</header>
+
+
+    <main>
+        <div class="search-wrapper">
+            <button id="theme-toggle" class="theme-btn-neon">
+             <span id="theme-icon">🌙</span>
+             </button>
+            <input type="text" id="searchInput" placeholder="ابحث هنا...">
+        </div>
+
+        
+                <div id="back-container" style="display: none; text-align: right; padding: 10px;">
+             <button onclick="goBack()" class="btn-back"> 
+                &#10094; </button>
+             </div>
+
+       <section class="category-nav">
+    <div class="nav-item active" onclick="showCategory('coffee', this)">
+        <div class="icon-circle">
+            <img src="64465h5h5h64g55.jpg" alt="">
+        </div>
+        <span>القهوة</span>
+    </div>
+       <div class="nav-item" onclick="showCategory('tea', this)">
+        <div class="icon-circle">
+            <img src="5413313151535.jpg" alt="شاي">
+        </div>
+        <span>الشاي</span>
+        </div>
+
+         <div class="nav-item" onclick="showCategory('hot', this)">
+        <div class="icon-circle">
+            <img src="2506866_0.jpg" alt="ساخن">
+        </div>
+        <span>مشروبات ساخنة</span>
+    </div>
+
+    <div class="nav-item" onclick="showCategory('cold', this)">
+        <div class="icon-circle">
+            <img src="4455646446511551.png" alt="بارد">
+        </div>
+        <span>مشروبات باردة</span>
+    </div>
+        
+    <div class="nav-item" onclick="showCategory('fresh', this)">
+        <div class="icon-circle">
+            <img src="12022521498212848301.jpg" alt="">
+        </div>
+        <span>عصائر فريش</span>
+    </div>
+
+     <div class="nav-item" onclick="showCategory('smoothie', this)">
+        <div class="icon-circle">
+            <img src="6541845515515.jpg" alt="">
+        </div>
+        <span> سموزي</span>
+    </div>
+
+    <div class="nav-item" onclick="showCategory('soda', this)">
+        <div class="icon-circle">
+            <img src="85200258.jpg" alt="">
+        </div>
+        <span> مشروبات غازيه</span>
+
+    </div>
+
+    <div class="nav-item" onclick="showCategory('milkshake', this)">
+        <div class="icon-circle">
+            <img src="يرمىتمسيى515115155151515511551.jpg" alt="">
+        </div>
+        <span> ميلك شيك </span>
+        
+    </div>
+
+    <div class="nav-item" onclick="showCategory('herbs', this)">
+        <div class="icon-circle">
+            <img src="5515331531200021.jpg" alt="">
+        </div>
+
+        <span>اعشاب طبيعيه</span>
+    </div>
+
+    <div class="nav-item" onclick="showCategory('cocktail', this)">
+        <div class="icon-circle">
+            <img src="6565ل4566465ل645456.jpg" alt="">
+        </div>
+        <span> كوكتيل </span>
+        
+    </div>
+
+    <div class="nav-item" onclick="showCategory('sweets', this)">
+        <div class="icon-circle">
+            <img src="449489498656565651156.png" alt="">
+        </div>
+        <span> حلويات  </span>
+        
+    </div>
+
+    <div class="nav-item" onclick="showCategory('yogurt', this)">
+        <div class="icon-circle">
+            <img src="65562loop[1515.jpg" alt="">
+        </div>
+        <span>  زبادي</span>
+        
+    </div>
+
+      <div class="nav-item" onclick="showCategory('sandwiches', this)">
+        <div class="icon-circle">
+            <img src="252525288006479.jpg" alt="سندوتشات">
+        </div>
+        <span>سندوتشات</span>
+    </div>
+
+    
+
+    
+
+    <div class="nav-item" onclick="showCategory('grill', this)">
+        <div class="icon-circle">
+            <img src="66662000022000022.jpg" alt="مشاوي">
+        </div>
+        <span>المشاوي</span>
+    </div>
+
+    <div class="nav-item" onclick="showCategory('stew', this)">
+        <div class="icon-circle">
+            <img src="رسررس655654645456.png" alt="طواجن">
+        </div>
+        <span>طواجن</span>
+    </div>
+    
+    <div class="nav-item" onclick="showCategory('trays', this)">
+        <div class="icon-circle">
+            <img src="1156155132322131615312.jpg" alt="">
+        </div>
+        <span>صواني</span>
+    </div>
+    
+    <div class="nav-item" onclick="showCategory('paper_meat', this)">
+        <div class="icon-circle">
+            <img src="1655161653420.jpg" alt="">
+        </div>
+        <span>ورق الحمه</span>
+    </div>
+    
+    <div class="nav-item" onclick="showCategory('kitchen', this)">
+        <div class="icon-circle">
+            <img src="15651655165465465.jpg" alt="">
+        </div>
+        <span> ركن المطباخ</span>
+    </div>
+    
+   
+        
+    <div class="nav-item" onclick="showCategory('meals', this)">
+        <div class="icon-circle">
+            <img src="963336996963.jpg" alt="">
+        </div>
+        <span>  وجبات</span>
+    </div>
+
+
+
+    
+       <div class="nav-item" onclick="showCategory('soup', this)">
+        <div class="icon-circle">
+            <img src="7789654.jpg" alt="شوربة">
+        </div>
+        <span>الشوربة</span>
+    </div>
+     
+    <div class="nav-item" onclick="showCategory('salad', this)">
+        <div class="icon-circle">
+            <img src="8789797797.jpg" alt="">
+        </div>
+        <span>  السلطات</span>
+    </div>
+    
+</section>
+        <div id="products-container" class="products-list"></div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>

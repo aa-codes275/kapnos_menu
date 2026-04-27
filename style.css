@@ -1,0 +1,534 @@
+
+:root {
+    --kapnos-red: #ff0000;
+    --dark-bg: #0a0a0a;
+}
+/* الألوان الجديدة */
+[data-theme="blue"] {
+    --kapnos-red: #00f2ff; /* أزرق نيون ساطع */
+    --dark-bg: #050a15;    /* خلفية كحلي غامقة جداً */
+}
+
+/* تنسيق الزرار نفسه */
+.theme-btn-neon {
+    position: absolute;
+    left: 25px; /* مكانه على الشمال */
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--kapnos-red);
+    color: var(--kapnos-red);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--kapnos-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s;
+    z-index: 10;
+}
+
+.theme-btn-neon:hover {
+    box-shadow: 0 0 20px var(--kapnos-red);
+    transform: scale(1.1);
+}
+
+/* عشان نضمن إن أي حاجة واخدة اللون الأحمر تتغير */
+.icon-circle, .btn-back, #searchInput, .item-row {
+    border-color: var(--kapnos-red) !important;
+}
+
+.item-price, .brand-name {
+    color: var(--text-white);
+    text-shadow: 0 0 10px var(--kapnos-red), 0 0 20px var(--kapnos-red) !important;
+}
+
+
+body {
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('5985325600777899390_121.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+}
+
+.logo-wrapper { text-align: center; padding: 20px; }
+.main-logo-img { width: 180px; filter: drop-shadow(0 0 10px var(--kapnos-red)); }
+
+.brand-name { text-align: center; letter-spacing: 5px; font-weight: 900; margin: 10px 0; }
+
+/* تصميم الأقسام المدورة */
+.category-nav {
+    display: grid;
+    /* هذا السطر هو السحر: يقسم الصف لـ 4 أعمدة متساوية بالظبط */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px;      /* المسافة بين الدوائر */
+    padding: 15px;  /* مسافة داخلية للحاوية */
+    justify-items: center; /* لسنترة الدوائر في نص العمود */
+    align-items: start;
+}
+/* حاوية الأقسام - 4 أعمدة */
+.category-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 4 أعمدة متساوية */
+    gap: 8px; /* مسافة بسيطة عشان المساحة في الموبايل */
+    padding: 15px 5px;
+    justify-items: center;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* الشكل البيضاوي المتوهج */
+.icon-circle {
+    width: 75px;      /* العرض */
+    height: 95px;     /* الطول (أكبر من العرض عشان تبقى بيضاوية) */
+    border-radius: 50%; /* بتعمل الشكل البيضاوي */
+    overflow: hidden;   /* عشان تقص زوايا الصورة */
+    position: relative;
+    border: 2px solid #ff0000;
+    background: #000;
+    /* التوهج الأحمر */
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
+    transition: 0.4s ease;
+}
+
+/* الصورة داخل البيضاوي */
+.icon-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* بتخلي الصورة تملأ المكان من غير مط */
+}
+
+/* النص تحت الصورة */
+.nav-item span {
+    font-size: 11px;
+    color: #fff;
+    margin-top: 6px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* تأثير التوهج عند الاختيار */
+.nav-item.active .icon-circle, 
+.nav-item:hover .icon-circle {
+    box-shadow: 0 0 25px #ff0000;
+    transform: translateY(-5px); /* حركة خفيفة لفوق */
+}
+/* تنسيق الشريط العلوي */
+/* --- الهيدر الاحترافي في النص --- */
+.top-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 10px 0;
+    background: rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid var(--kapnos-red);
+    width: 100%;
+}
+
+.main-header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+}
+
+/* سطر السوشيال ميديا */
+.contact-icons-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+/* شكل العنوان "الطرش" المتوهج */
+.location-bar-v2 {
+    width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.25), transparent);
+    color: #fff;
+    padding: 10px 0;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-top: 1px solid rgba(255, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 0, 0, 0.1);
+}
+
+.location-bar-v2 img {
+    width: 14px;
+    /* فلتر اللون الأحمر للأيقونة */
+    filter: invert(18%) sepia(95%) saturate(7433%) hue-rotate(358deg) brightness(101%) contrast(117%);
+}
+
+/* --- تنظيف السيرش نهائياً --- */
+.search-wrapper {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+}
+
+#searchInput {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid var(--kapnos-red) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: #fff !important;
+    width: 85% !important;
+    max-width: 300px;
+    text-align: center;
+    font-family: 'Cairo', sans-serif;
+    outline: none !important;
+    padding: 10px 0;
+}
+
+#searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* اسم البراند - تنظيف شامل */
+.brand-name {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Great Vibes', cursive;
+    font-size: 38px;
+    color: #fff;
+    text-shadow: 0 0 10px var(--kapnos-red), 0 0 20px var(--kapnos-red);
+}
+.brand-name {
+    font-family: 'Great Vibes', cursive; /* خط يشبه الإمضاء */
+    font-size: 35px; /* كبرنا الخط لأن خطوط الإمضاء بتبان أصغر */
+    margin: 0;
+    
+    /* جعل الكتابة بيضاء */
+    color: #ffffff; 
+    
+    /* التوهج: طبقات من الأحمر والأبيض ليعطي شكل "نيون" متداخل */
+    text-shadow: 
+        0 0 5px #fff,          /* توهج أبيض داخلي */
+        0 0 10px #ff0000,      /* توهج أحمر خفيف */
+        0 0 20px #ff0000,      /* توهج أحمر أقوى */
+        0 0 40px #ff0000;      /* انتشار الأحمر حول الكلمة */
+        
+    letter-spacing: 1px;
+    font-weight: normal; /* خطوط الإمضاء بتبان أجمل لو مش سميكة قوي */
+    transform: rotate(-5px); /* ميل خفيف عشان تبان كأنها إمضاء يدوي فعلاً */
+    display: inline-block;
+}
+
+/* الحاوية اللي على الشمال (فيس + واتس) */
+.header-left-side {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* المسافة بين الفيس والواتس */
+}
+
+/* أيقونة الفيس */
+.social-icon img {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+
+/* الحاوية اللي بتجمع الرقمين */
+.whatsapp-container {
+    display: flex;
+    flex-direction: column; /* يخليهم فوق بعض لو المساحة ضيقة أو جنب بعض */
+    gap: 2px;
+}
+
+/* لو عاوزهم جنب بعض بالظبط (الوضع الأفقي) */
+@media (min-width: 400px) {
+    .whatsapp-container {
+        flex-direction: row;
+        gap: 8px;
+    }
+}
+
+.whatsapp-simple {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 10px; /* صغرنا الخط شوية عشان الرقمين يكفوا */
+    font-weight: bold;
+}
+
+.whatsapp-simple img {
+    width: 15px; /* صغرنا الأيقونة حاجة بسيطة */
+    height: 15px;
+}
+.location-bar {
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.2), transparent);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    font-size: 11px;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    letter-spacing: 0.5px;
+}
+
+.location-bar img {
+    width: 14px;
+    height: 14px;
+    /* بيخلي أيقونة اللوكيشن تنور أحمر */
+    filter: invert(18%) sepia(95%) saturate(7433%) hue-rotate(358deg) brightness(101%) contrast(117%);
+}
+
+.location-bar span {
+    font-weight: 300;
+    opacity: 0.9;
+    font-family: 'Cairo', sans-serif;
+}
+/* تأثير بسيط عند اللمس */
+.social-icon:hover, .whatsapp-simple:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+/* التفاعل عند الضغط أو التفعيل */
+.nav-item.active .icon-circle, 
+.nav-item:hover .icon-circle {
+    box-shadow: 0 0 25px var(--kapnos-red);
+    background: var(--kapnos-red);
+    transform: scale(1.1);
+}
+
+.nav-item.active .icon-circle img,
+.nav-item:hover .icon-circle img {
+    filter: brightness(1) invert(0); /* بيرجع ألوان الصورة الأصلية عند التفعيل */
+}
+
+.nav-item:hover .icon-circle, .nav-item.active .icon-circle {
+    box-shadow: 0 0 20px var(--kapnos-red);
+    background: var(--kapnos-red);
+    transform: scale(1.1);
+}
+
+.nav-item span { font-size: 12px; font-weight: bold; }
+
+
+
+/* تنسيق حاوية البحث */
+.search-wrapper {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+/* إعادة تصميم السيرش (الدائرة الحمراء الشفافة) */
+#searchInput {
+    display: block;
+    margin: 15px auto; /* سنترة في النص ومسافة من فوق وتحت */
+    width: 90%;
+    max-width: 320px;
+    
+    /* الخلفية واللون */
+    background: rgba(0, 0, 0, 0.2) !important; /* خلفية سودة خفيفة جداً شفافة */
+    color: #fff !important;
+    
+    /* الإطار الدائري (الرجوع للدائرة) */
+    border: 2px solid var(--kapnos-red) !important; /* الإطار الأحمر */
+    border-radius: 50px !important; /* عشان يفضل دايرة */
+    
+    /* التوهج */
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.4) !important;
+    
+    /* إعدادات الموبايل */
+    padding: 12px 20px;
+    font-size: 16px; /* منع الزووم التلقائي */
+    outline: none !important;
+    text-align: center;
+    font-family: 'Cairo', sans-serif;
+    transition: 0.3s all ease;
+}
+
+/* تأثير التوهج لما تضغط عليه */
+#searchInput:focus {
+    box-shadow: 0 0 20px var(--kapnos-red) !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+}
+
+#searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* تأثير التوهج القوي لما تضغط عليه (Focus) */
+#searchInput:focus {
+    box-shadow: 0 0 20px #ff0000, inset 0 0 5px #ff0000;
+    transform: scale(1.02); /* تكبير بسيط جداً */
+    border-color: #fff; /* الإطار يقلب أبيض عشان ينطق مع الأحمر */
+}
+
+/* تغيير لون الكلام المكتوب جوه الخانة (Placeholder) */
+#searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+}
+.item-row {
+    display: flex; justify-content: space-between;
+    background: rgba(255, 255, 255, 0.03);
+    margin: 10px 20px; padding: 15px;
+    border-right: 4px solid var(--kapnos-red);
+    backdrop-filter: blur(10px);
+}
+
+.item-price { color: var(--kapnos-red); font-weight: bold; }
+.old-price { text-decoration: line-through; color: #777; font-size: 0.8rem; margin-left: 5px; }
+
+.btn-back {
+    background: #000; /* أسود */
+    color: #ff0000; /* أحمر */
+    border: 2px solid #ff0000;
+    padding: 10px 25px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.4s;
+    /* تأثير التوهج (Glow) */
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.4), inset 0 0 5px rgba(255, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-back:hover {
+    background: #ff0000;
+    color: #fff;
+    box-shadow: 0 0 25px #ff0000; /* توهج أقوى عند الوقوف عليه */
+    transform: scale(1.05);
+}
+/* الحل النهائي لإزالة أي سواد في منطقة الهيدر */
+header, 
+.top-bar, 
+.brand-side, 
+.header-left-side, 
+.logo-wrapper,
+.main-header-content {
+    background: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* لو الشريط الأسود ده "Header" واخد padding كبير هو اللي مبين السواد */
+.top-bar {
+    padding-top: 20px !important;
+    padding-bottom: 10px !important;
+}
+
+/* التأكد إن مفيش خلفية سودة ورا كلمة كابنوس بالذات */
+.brand-name {
+    background: transparent !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+/* منع الزوم التلقائي عند الضغط على السيرش */
+#searchInput {
+    font-size: 16px !important; 
+    touch-action: manipulation; /* بيسرع الاستجابة ويمنع حركات الزوم */
+}
+
+/* تأمين الشاشة بالكامل من الحركة الجانبية */
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+    position: relative;
+    touch-action: pan-y; /* يسمح بالطلوع والنزول فقط ويمنع الزوم بالصوابع */
+}
+@media screen and (max-width: 600px) {
+    
+   
+    .glass-header {
+        padding: 10px;
+    }
+    .glass-header h1 {
+        font-size: 18px;
+    }
+
+   
+    .category-nav {
+        gap: 8px;
+        padding: 10px 5px;
+        -webkit-overflow-scrolling: touch; 
+    }
+    .nav-item {
+        padding: 6px 14px;
+        font-size: 12px;
+    }
+
+ 
+    .mini-card {
+        width: 92%; 
+        max-width: none;
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .mini-card img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .product-info h3 {
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+
+   
+    .glass-select {
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .add-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+
+  
+    .sidebar-cart {
+        width: 85%;
+    }
+
+
+    .cart-floating-btn {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .mini-toast {
+        width: auto;
+        left: 20px;
+        right: 20px;
+        text-align: center;
+        bottom: 80px;
+    }
+}
+
+
+.category-nav::-webkit-scrollbar {
+    display: none;
+}

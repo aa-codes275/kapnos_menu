@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم كابنوس | Control Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        :root { --main-red: #ff0000; --bg-black: #0a0a0a; --card-bg: #151515; }
+        body { font-family: 'Cairo', sans-serif; background: var(--bg-black); color: #fff; margin: 0; padding: 20px; }
+        
+        #login-overlay { position: fixed; inset: 0; background: #000; z-index: 1000; display: flex; align-items: center; justify-content: center; }
+        .login-box { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid var(--main-red); text-align: center; width: 300px; }
+        .login-box input { width: 100%; padding: 12px; margin: 20px 0; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; text-align: center; font-size: 1.1rem; }
+        .login-box button { background: var(--main-red); color: #fff; border: none; padding: 12px; width: 100%; border-radius: 8px; font-weight: 900; cursor: pointer; }
+
+        .admin-header { text-align: center; margin-bottom: 30px; }
+        .admin-header h1 { color: var(--main-red); font-size: 2rem; margin: 0; }
+        
+        .add-form { background: var(--card-bg); padding: 20px; border-radius: 15px; margin-bottom: 30px; border: 1px solid #333; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+        .add-form input, .add-form select { background: #222; border: 1px solid #444; color: #fff; padding: 12px; border-radius: 8px; font-family: 'Cairo'; }
+        
+        .table-container { overflow-x: auto; background: var(--card-bg); border-radius: 15px; border: 1px solid #333; }
+        table { width: 100%; border-collapse: collapse; min-width: 900px; }
+        th { background: #1a1a1a; padding: 15px; text-align: center; color: var(--main-red); font-size: 0.9rem; }
+        td { padding: 12px; border-bottom: 1px solid #222; text-align: center; }
+        
+        .input-edit { background: transparent; border: 1px solid transparent; color: #fff; text-align: center; width: 90%; padding: 5px; border-radius: 4px; transition: 0.3s; font-family: 'Cairo'; }
+        .input-edit:focus { background: #222; border-color: #555; outline: none; }
+        
+        .btn-status { padding: 8px 15px; border-radius: 6px; border: none; font-weight: bold; cursor: pointer; font-family: 'Cairo'; font-size: 0.8rem; }
+        .btn-visible { background: #28a745; color: white; }
+        .btn-hidden { background: #555; color: #ccc; }
+        .row-is-hidden { opacity: 0.5; background: #1a0a0a; }
+        
+        .del-icon { color: #ff4444; cursor: pointer; font-size: 1.2rem; border: none; background: none; }
+    </style>
+</head>
+<body>
+
+    <div id="login-overlay">
+        <div class="login-box">
+            <h2 style="color: var(--main-red); margin-bottom: 10px;">KAPNOS ADMIN</h2>
+            <input type="password" id="pass-input" placeholder="كلمة السر">
+            <button onclick="checkLogin()">دخول 🔑</button>
+            <p id="err-msg" style="color:red; display:none; margin-top:15px; font-size: 0.8rem;">  خطأ في كلمة المرور !</p>
+        </div>
+    </div>
+
+    <div id="admin-content" style="display: none;">
+        <div class="admin-header">
+            <h1>لوحة تحكم كابنوس</h1>
+            <p style="color: #888;">إدارة الأصناف، الأسعار، والخصومات</p>
+        </div> 
+
+        <div style="margin-bottom: 20px;">
+            <input type="text" id="adminSearch" placeholder="🔍 البحث   ..." 
+                   oninput="loadData()" 
+                   style="width: 100%; padding: 12px; border-radius: 8px; background: #222; border: 1px solid #ff0000; color: #fff; font-family: 'Cairo';">
+        </div>
+
+        <div class="add-form">
+            <input type="text" id="newName" placeholder="اسم الصنف الجديد">
+            <input type="number" id="newPrice" placeholder="السعر">
+            <input type="number" id="newDisc" placeholder="الخصم (اختياري)">
+            <input type="text" id="newBadge" placeholder="شارة (New مثلاً)">
+
+           <select id="newCat">
+    <optgroup label="☕ ركن الكافيه والمشروبات">
+        <option value="coffee">القهوة</option>
+        <option value="tea">الشاي</option>
+        <option value="fresh">عصائر فريش</option>
+        <option value="hot">مشروبات ساخنة</option>
+        <option value="cold">مشروبات باردة</option>
+        <option value="smoothie">سموزي</option>
+        <option value="cocktail">كوكتيل</option>
+        <option value="milkshake">ميلك شيك</option>
+        <option value="soda">مشروبات غازية</option>
+        <option value="herbs">أعشاب طبيعية</option>
+        <option value="yogurt">زبادي</option>
+        <option value="sweets">حلويات</option>
+    </optgroup>
+
+    <optgroup label="🥩 ركن المطبخ والمطعم">
+        <option value="grill">المشاوي</option>
+        <option value="soup">الشوربة</option>
+         <option value="stew">طواجن</option>
+        <option value="trays">صواني</option>
+        <option value="paper_meat">ورق لحمة</option>
+        <option value="kitchen">ركن المطبخ</option>
+        <option value="meals">وجبات</option>
+        <option value="sandwiches">سندوتشات</option>
+        <option value="salad">السلطات</option>
+    </optgroup>
+</select>
+    <input type="text" id="newImage" placeholder="رابط صورة المنتج (URL)">
+            
+            <button onclick="addItem()" style="background:var(--main-red); color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold; padding:12px;">إضافة صنف +</button>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="20%">الاسم</th>
+                        <th width="10%">السعر</th>
+                        <th width="10%">الخصم</th>
+                        <th width="15%">الشارة (Badge)</th>
+                        <th width="15%">القسم</th>
+                        <th width="15%">الحالة</th>
+                        <th width="10%">حذف</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const SUPABASE_URL = 'https://ipyboqsodseqzkgqxjev.supabase.co'; 
+        const SUPABASE_KEY = 'sb_publishable_xZyMpi5Mfck4k-eQGSfteg_DkyH4jHN'; 
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        const ADMIN_PASS = "12345";
+
+        function checkLogin() {
+            const input = document.getElementById('pass-input').value;
+            if (input === ADMIN_PASS) {
+                document.getElementById('login-overlay').style.display = 'none';
+                document.getElementById('admin-content').style.display = 'block';
+                loadData();
+            } else {
+                document.getElementById('err-msg').style.display = 'block';
+            }
+        }
+
+        // دالة العرض والبحث مدموجة لسهولة التحكم
+        async function loadData() {
+            const { data, error } = await _supabase.from('products').select('*').order('id', {ascending: false});
+            if(error) return console.error(error);
+
+            const tbody = document.getElementById('table-body');
+            const searchTerm = document.getElementById('adminSearch').value.toLowerCase();
+
+            const filteredData = data.filter(item => 
+                item.name.toLowerCase().includes(searchTerm)
+            );
+
+            tbody.innerHTML = filteredData.map(item => `
+                <tr class="${item.is_hidden ? 'row-is-hidden' : ''}">
+                    <td><input class="input-edit" value="${item.name}" onchange="update(${item.id}, 'name', this.value)"></td>
+                    <td><input class="input-edit" type="number" value="${item.price}" onchange="update(${item.id}, 'price', this.value)"></td>
+                    <td><input class="input-edit" type="number" value="${item.discount_price || ''}" onchange="update(${item.id}, 'discount_price', this.value)"></td>
+                    <td><input class="input-edit" value="${item.badge || ''}" onchange="update(${item.id}, 'badge', this.value)"></td>
+                    <td style="font-size: 0.8rem; color: #888;">${item.category}</td>
+                    <td>
+                        <button class="btn-status ${item.is_hidden ? 'btn-hidden' : 'btn-visible'}" onclick="toggleHide(${item.id}, ${item.is_hidden})">
+                            ${item.is_hidden ? '🚫 مخفي' : '👁️ ظاهر'}
+                        </button>
+                    </td>
+                    <td><button class="del-icon" onclick="del(${item.id})">🗑️</button></td>
+                </tr>
+            `).join('');
+        }
+        async function addItem() {
+    const name = document.getElementById('newName').value;
+    const price = parseFloat(document.getElementById('newPrice').value);
+    const category = document.getElementById('newCat').value;
+    const badge = document.getElementById('newBadge')?.value || null;
+    const imageUrl = document.getElementById('newImage').value; // الخانة الجديدة
+    
+    // ركز هنا: استخدمنا الاسم الغلط اللي في قاعدة بياناتك عشان يشتغل
+    const discount = document.getElementById('newDisc')?.value || null;
+
+    const { error } = await _supabase
+        .from('products')
+        .insert([{ 
+            name: name, 
+            price: price, 
+            category: category,
+            badge: badge,
+            image_url: imageUrl, // حفظ اللينك في القاعدة
+            badge: "New", // هنا بنخلي أي صنف جديد ينزل عليه كلمة New تلقائي
+            disconunt_price: discount, // عدلنا الاسم هنا لـ disconunt
+            is_hidden: false 
+        }]);
+
+    if (error) {
+        alert("فشل بسبب: " + error.message);
+    } else {
+        alert("تمت الإضافة بنجاح! 🎉");
+        document.getElementById('newName').value = '';
+        document.getElementById('newImage').value = '';
+        loadData();
+    }
+}
+
+
+        async function update(id, field, value) {
+            const { error } = await _supabase.from('products').update({ [field]: value }).eq('id', id);
+            if (error) alert("خطأ في التحديث: " + error.message);
+        }
+
+        async function toggleHide(id, currentStatus) {
+            const { error } = await _supabase.from('products').update({ is_hidden: !currentStatus }).eq('id', id);
+            if (error) alert("فشل الإخفاء: " + error.message);
+            else loadData();
+        }
+
+        async function del(id) {
+            if(confirm("نحذف الصنف ده نهائي؟")) {
+                const { error } = await _supabase.from('products').delete().eq('id', id);
+                if(error) alert(error.message);
+                else loadData();
+            }
+        }
+    </script>
+</body>
+</html>
