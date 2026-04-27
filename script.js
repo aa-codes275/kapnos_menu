@@ -22,7 +22,7 @@ function showCategory(cat, element) {
     nav.style.display = 'none';
     backBtn.style.display = 'block';
 
-    // فلترة مع مراعاة حالة الأحرف والمسافات
+    
     const filtered = menuData.filter(p => p.category.trim().toLowerCase() === cat.toLowerCase() && p.is_hidden !== true);
 
     if (filtered.length === 0) {
@@ -30,7 +30,7 @@ function showCategory(cat, element) {
     } else {
         displayItems(filtered);
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // السطر ده هيخلي المنيو يطلع لفوق أول ما تختار القسم
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     
     
 }
@@ -80,14 +80,14 @@ const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 const htmlRoot = document.documentElement;
 
-// 1. شوف الزبون كان مختار إيه قبل كدة
+
 const savedTheme = localStorage.getItem('kapnos-theme') || 'red';
 if (savedTheme === 'blue') {
     htmlRoot.setAttribute('data-theme', 'blue');
-    themeIcon.innerText = '☀️'; // شمس للمود الأزرق
+    themeIcon.innerText = '☀️'; 
 }
 
-// 2. حركة التبديل عند الضغط
+
 themeToggle.addEventListener('click', () => {
     const isBlue = htmlRoot.getAttribute('data-theme') === 'blue';
     
@@ -101,7 +101,7 @@ themeToggle.addEventListener('click', () => {
         localStorage.setItem('kapnos-theme', 'blue');
     }
     
-    // أنيميشن خفيف عند التبديل
+    
     themeToggle.style.transform = 'rotate(360deg)';
     setTimeout(() => themeToggle.style.transform = 'rotate(0deg)', 400);
 });
