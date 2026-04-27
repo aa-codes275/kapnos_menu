@@ -456,6 +456,29 @@ html, body {
     position: relative;
     touch-action: pan-y; /* يسمح بالطلوع والنزول فقط ويمنع الزوم بالصوابع */
 }
+/* تعديلات خاصة بالموبايل فقط */
+@media (max-width: 480px) {
+    .search-wrapper {
+        width: 90%; /* بنخلي عرض الحاوية أصغر شوية */
+        margin: 10px auto; /* توسيط */
+    }
+
+    #searchInput {
+        height: 40px; /* تقليل الارتفاع */
+        font-size: 0.9rem; /* تصغير الخط */
+        padding: 0 45px 0 15px; /* مسافة عشان الزرار مبيغطيش الكلام */
+    }
+
+    .theme-btn-neon {
+        width: 35px; /* تصغير زرار المود */
+        height: 35px;
+        left: 15px; /* تظبيط مكانه جوه السيرش */
+    }
+    
+    .theme-btn-neon span {
+        font-size: 16px; /* تصغير أيقونة القمر */
+    }
+}
 @media screen and (max-width: 600px) {
     
    
