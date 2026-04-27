@@ -339,7 +339,7 @@ body {
     display: block;
     margin: 15px auto; /* سنترة في النص ومسافة من فوق وتحت */
     width: 90%;
-    max-width: 150px;
+    max-width: 50px;
     
     /* الخلفية واللون */
     background: rgba(0, 0, 0, 0.2) !important; /* خلفية سودة خفيفة جداً شفافة */
