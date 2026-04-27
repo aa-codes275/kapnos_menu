@@ -3,16 +3,16 @@
     --kapnos-red: #ff0000;
     --dark-bg: #0a0a0a;
 }
-/* الألوان الجديدة */
+
 [data-theme="blue"] {
-    --kapnos-red: #00f2ff; /* أزرق نيون ساطع */
-    --dark-bg: #050a15;    /* خلفية كحلي غامقة جداً */
+    --kapnos-red: #00f2ff; 
+    --dark-bg: #050a15;    
 }
 
-/* تنسيق الزرار نفسه */
+
 .theme-btn-neon {
     position: absolute;
-    left: 25px; /* مكانه على الشمال */
+    left: 25px; 
     background: rgba(0, 0, 0, 0.5);
     border: 2px solid var(--kapnos-red);
     color: var(--kapnos-red);
@@ -33,7 +33,7 @@
     transform: scale(1.1);
 }
 
-/* عشان نضمن إن أي حاجة واخدة اللون الأحمر تتغير */
+
 .icon-circle, .btn-back, #searchInput, .item-row {
     border-color: var(--kapnos-red) !important;
 }
@@ -58,21 +58,21 @@ body {
 
 .brand-name { text-align: center; letter-spacing: 5px; font-weight: 900; margin: 10px 0; }
 
-/* تصميم الأقسام المدورة */
+
 .category-nav {
     display: grid;
-    /* هذا السطر هو السحر: يقسم الصف لـ 4 أعمدة متساوية بالظبط */
+    
     grid-template-columns: repeat(4, 1fr); 
-    gap: 10px;      /* المسافة بين الدوائر */
-    padding: 15px;  /* مسافة داخلية للحاوية */
-    justify-items: center; /* لسنترة الدوائر في نص العمود */
+    gap: 10px;     
+    padding: 15px;  
+    justify-items: center;
     align-items: start;
 }
-/* حاوية الأقسام - 4 أعمدة */
+
 .category-nav {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 4 أعمدة متساوية */
-    gap: 8px; /* مسافة بسيطة عشان المساحة في الموبايل */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 8px;
     padding: 15px 5px;
     justify-items: center;
 }
@@ -85,28 +85,28 @@ body {
     width: 100%;
 }
 
-/* الشكل البيضاوي المتوهج */
+
 .icon-circle {
-    width: 75px;      /* العرض */
-    height: 95px;     /* الطول (أكبر من العرض عشان تبقى بيضاوية) */
-    border-radius: 50%; /* بتعمل الشكل البيضاوي */
-    overflow: hidden;   /* عشان تقص زوايا الصورة */
+    width: 75px;    
+    height: 95px;     
+    border-radius: 50%;
+    overflow: hidden;   
     position: relative;
     border: 2px solid #ff0000;
     background: #000;
-    /* التوهج الأحمر */
+   
     box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
     transition: 0.4s ease;
 }
 
-/* الصورة داخل البيضاوي */
+
 .icon-circle img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* بتخلي الصورة تملأ المكان من غير مط */
+    object-fit: cover;
 }
 
-/* النص تحت الصورة */
+
 .nav-item span {
     font-size: 11px;
     color: #fff;
@@ -115,14 +115,13 @@ body {
     font-weight: bold;
 }
 
-/* تأثير التوهج عند الاختيار */
+
 .nav-item.active .icon-circle, 
 .nav-item:hover .icon-circle {
     box-shadow: 0 0 25px #ff0000;
-    transform: translateY(-5px); /* حركة خفيفة لفوق */
+    transform: translateY(-5px);
 }
-/* تنسيق الشريط العلوي */
-/* --- الهيدر الاحترافي في النص --- */
+
 .top-bar {
     display: flex;
     flex-direction: column;
@@ -141,7 +140,7 @@ body {
     gap: 15px;
 }
 
-/* سطر السوشيال ميديا */
+
 .contact-icons-row {
     display: flex;
     justify-content: center;
@@ -149,7 +148,7 @@ body {
     gap: 20px;
 }
 
-/* شكل العنوان "الطرش" المتوهج */
+
 .location-bar-v2 {
     width: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.25), transparent);
@@ -166,11 +165,11 @@ body {
 
 .location-bar-v2 img {
     width: 14px;
-    /* فلتر اللون الأحمر للأيقونة */
+   
     filter: invert(18%) sepia(95%) saturate(7433%) hue-rotate(358deg) brightness(101%) contrast(117%);
 }
 
-/* --- تنظيف السيرش نهائياً --- */
+
 .search-wrapper {
     padding: 15px;
     display: flex;
@@ -197,7 +196,7 @@ body {
     color: rgba(255, 255, 255, 0.4);
 }
 
-/* اسم البراند - تنظيف شامل */
+
 .brand-name {
     background: transparent !important;
     border: none !important;
@@ -210,34 +209,34 @@ body {
     text-shadow: 0 0 10px var(--kapnos-red), 0 0 20px var(--kapnos-red);
 }
 .brand-name {
-    font-family: 'Great Vibes', cursive; /* خط يشبه الإمضاء */
-    font-size: 35px; /* كبرنا الخط لأن خطوط الإمضاء بتبان أصغر */
+    font-family: 'Great Vibes', cursive; 
+    font-size: 35px;
     margin: 0;
     
-    /* جعل الكتابة بيضاء */
+  
     color: #ffffff; 
     
-    /* التوهج: طبقات من الأحمر والأبيض ليعطي شكل "نيون" متداخل */
+
     text-shadow: 
-        0 0 5px #fff,          /* توهج أبيض داخلي */
-        0 0 10px #ff0000,      /* توهج أحمر خفيف */
-        0 0 20px #ff0000,      /* توهج أحمر أقوى */
-        0 0 40px #ff0000;      /* انتشار الأحمر حول الكلمة */
+        0 0 5px #fff,          
+        0 0 10px #ff0000,    
+        0 0 20px #ff0000,     
+        0 0 40px #ff0000;     
         
     letter-spacing: 1px;
-    font-weight: normal; /* خطوط الإمضاء بتبان أجمل لو مش سميكة قوي */
-    transform: rotate(-5px); /* ميل خفيف عشان تبان كأنها إمضاء يدوي فعلاً */
+    font-weight: normal; 
+    transform: rotate(-5px);
     display: inline-block;
 }
 
-/* الحاوية اللي على الشمال (فيس + واتس) */
+
 .header-left-side {
     display: flex;
     align-items: center;
-    gap: 15px; /* المسافة بين الفيس والواتس */
+    gap: 15px; 
 }
 
-/* أيقونة الفيس */
+
 .social-icon img {
     width: 24px;
     height: 24px;
@@ -245,14 +244,14 @@ body {
 }
 
 
-/* الحاوية اللي بتجمع الرقمين */
+
 .whatsapp-container {
     display: flex;
-    flex-direction: column; /* يخليهم فوق بعض لو المساحة ضيقة أو جنب بعض */
+    flex-direction: column; 
     gap: 2px;
 }
 
-/* لو عاوزهم جنب بعض بالظبط (الوضع الأفقي) */
+
 @media (min-width: 400px) {
     .whatsapp-container {
         flex-direction: row;
@@ -266,12 +265,12 @@ body {
     gap: 3px;
     text-decoration: none;
     color: #fff;
-    font-size: 10px; /* صغرنا الخط شوية عشان الرقمين يكفوا */
+    font-size: 10px; 
     font-weight: bold;
 }
 
 .whatsapp-simple img {
-    width: 15px; /* صغرنا الأيقونة حاجة بسيطة */
+    width: 15px; 
     height: 15px;
 }
 .location-bar {
@@ -291,7 +290,7 @@ body {
 .location-bar img {
     width: 14px;
     height: 14px;
-    /* بيخلي أيقونة اللوكيشن تنور أحمر */
+   
     filter: invert(18%) sepia(95%) saturate(7433%) hue-rotate(358deg) brightness(101%) contrast(117%);
 }
 
@@ -300,12 +299,12 @@ body {
     opacity: 0.9;
     font-family: 'Cairo', sans-serif;
 }
-/* تأثير بسيط عند اللمس */
+
 .social-icon:hover, .whatsapp-simple:hover {
     opacity: 0.8;
     transform: scale(1.05);
 }
-/* التفاعل عند الضغط أو التفعيل */
+
 .nav-item.active .icon-circle, 
 .nav-item:hover .icon-circle {
     box-shadow: 0 0 25px var(--kapnos-red);
@@ -315,7 +314,7 @@ body {
 
 .nav-item.active .icon-circle img,
 .nav-item:hover .icon-circle img {
-    filter: brightness(1) invert(0); /* بيرجع ألوان الصورة الأصلية عند التفعيل */
+    filter: brightness(1) invert(0); 
 }
 
 .nav-item:hover .icon-circle, .nav-item.active .icon-circle {
@@ -328,40 +327,40 @@ body {
 
 
 
-/* تنسيق حاوية البحث */
+
 .search-wrapper {
     padding: 20px;
     display: flex;
     justify-content: center;
 }
-/* إعادة تصميم السيرش (الدائرة الحمراء الشفافة) */
+
 #searchInput {
     display: block;
-    margin: 15px auto; /* سنترة في النص ومسافة من فوق وتحت */
+    margin: 15px auto;
     width: 90%;
     max-width: 50px;
     
-    /* الخلفية واللون */
-    background: rgba(0, 0, 0, 0.2) !important; /* خلفية سودة خفيفة جداً شفافة */
+  
+    background: rgba(0, 0, 0, 0.2) !important;
     color: #fff !important;
     
-    /* الإطار الدائري (الرجوع للدائرة) */
-    border: 2px solid var(--kapnos-red) !important; /* الإطار الأحمر */
-    border-radius: 50px !important; /* عشان يفضل دايرة */
+
+    border: 2px solid var(--kapnos-red) !important;
+    border-radius: 50px !important; 
     
-    /* التوهج */
+   
     box-shadow: 0 0 10px rgba(255, 0, 0, 0.4) !important;
     
-    /* إعدادات الموبايل */
+  
     padding: 12px 20px;
-    font-size: 16px; /* منع الزووم التلقائي */
+    font-size: 16px;
     outline: none !important;
     text-align: center;
     font-family: 'Cairo', sans-serif;
     transition: 0.3s all ease;
 }
 
-/* تأثير التوهج لما تضغط عليه */
+
 #searchInput:focus {
     box-shadow: 0 0 20px var(--kapnos-red) !important;
     background: rgba(0, 0, 0, 0.4) !important;
@@ -371,14 +370,14 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* تأثير التوهج القوي لما تضغط عليه (Focus) */
+
 #searchInput:focus {
     box-shadow: 0 0 20px #ff0000, inset 0 0 5px #ff0000;
-    transform: scale(1.02); /* تكبير بسيط جداً */
-    border-color: #fff; /* الإطار يقلب أبيض عشان ينطق مع الأحمر */
+    transform: scale(1.02); 
+    border-color: #fff;
 }
 
-/* تغيير لون الكلام المكتوب جوه الخانة (Placeholder) */
+
 #searchInput::placeholder {
     color: rgba(255, 255, 255, 0.5);
     font-size: 14px;
@@ -395,8 +394,8 @@ body {
 .old-price { text-decoration: line-through; color: #777; font-size: 0.8rem; margin-left: 5px; }
 
 .btn-back {
-    background: #000; /* أسود */
-    color: #ff0000; /* أحمر */
+    background: #000; 
+    color: #ff0000;
     border: 2px solid #ff0000;
     padding: 10px 25px;
     font-family: 'Cairo', sans-serif;
@@ -405,7 +404,7 @@ body {
     cursor: pointer;
     text-transform: uppercase;
     transition: 0.4s;
-    /* تأثير التوهج (Glow) */
+  
     box-shadow: 0 0 10px rgba(255, 0, 0, 0.4), inset 0 0 5px rgba(255, 0, 0, 0.2);
     display: flex;
     align-items: center;
@@ -414,10 +413,10 @@ body {
 .btn-back:hover {
     background: #ff0000;
     color: #fff;
-    box-shadow: 0 0 25px #ff0000; /* توهج أقوى عند الوقوف عليه */
+    box-shadow: 0 0 25px #ff0000; 
     transform: scale(1.05);
 }
-/* الحل النهائي لإزالة أي سواد في منطقة الهيدر */
+
 header, 
 .top-bar, 
 .brand-side, 
@@ -430,53 +429,53 @@ header,
     border: none !important;
 }
 
-/* لو الشريط الأسود ده "Header" واخد padding كبير هو اللي مبين السواد */
+
 .top-bar {
     padding-top: 20px !important;
     padding-bottom: 10px !important;
 }
 
-/* التأكد إن مفيش خلفية سودة ورا كلمة كابنوس بالذات */
+
 .brand-name {
     background: transparent !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
 }
 
-/* منع الزوم التلقائي عند الضغط على السيرش */
+
 #searchInput {
     font-size: 16px !important; 
-    touch-action: manipulation; /* بيسرع الاستجابة ويمنع حركات الزوم */
+    touch-action: manipulation; 
 }
 
-/* تأمين الشاشة بالكامل من الحركة الجانبية */
+
 html, body {
     overflow-x: hidden;
     max-width: 100%;
     position: relative;
-    touch-action: pan-y; /* يسمح بالطلوع والنزول فقط ويمنع الزوم بالصوابع */
+    touch-action: pan-y; 
 }
-/* تعديلات خاصة بالموبايل فقط */
+
 @media (max-width: 480px) {
     .search-wrapper {
-        width: 90%; /* بنخلي عرض الحاوية أصغر شوية */
-        margin: 10px auto; /* توسيط */
+        width: 90%; 
+        margin: 10px auto;
     }
 
     #searchInput {
-        height: 40px; /* تقليل الارتفاع */
-        font-size: 0.9rem; /* تصغير الخط */
-        padding: 0 45px 0 15px; /* مسافة عشان الزرار مبيغطيش الكلام */
+        height: 40px;
+        font-size: 0.9rem; 
+        padding: 0 45px 0 15px; 
     }
 
     .theme-btn-neon {
-        width: 35px; /* تصغير زرار المود */
+        width: 35px; 
         height: 35px;
-        left: 15px; /* تظبيط مكانه جوه السيرش */
+        left: 15px; 
     }
     
     .theme-btn-neon span {
-        font-size: 16px; /* تصغير أيقونة القمر */
+        font-size: 16px;
     }
 }
 @media screen and (max-width: 600px) {
