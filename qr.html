@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonjour QR Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f4f4f4; }
+        #qrcode { margin-top: 20px; display: flex; justify-content: center; }
+        .container { background: white; padding: 30px; border-radius: 15px; display: inline-block; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h1 { color: #5d4037; } /* لون بني كافيه */
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bonjour QR Code</h1>
+        <p>اسحب الصورة أو انسخها للطباعة</p>
+        <div id="qrcode"></div>
+    </div>
+
+    <script>
+        // حط لينك المنيو بتاعك هنا
+        const menuUrl = " https://aa-codes275.github.io/kapnos_menu/";
+
+        new QRCode(document.getElementById("qrcode"), {
+            text: menuUrl,
+            width: 256,
+            height: 256,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+    </script>
+</body>
+</html>
